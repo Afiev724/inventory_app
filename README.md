@@ -1,17 +1,53 @@
-# inventory_app
+# Inventory App
 
-A new Flutter project.
+Flutter + Firebase inventory manager with real-time CRUD operations.
+
+## Features
+
+- Add, update, delete inventory items using Cloud Firestore
+- Real-time item updates with `StreamBuilder`
+- Form validation for required and numeric fields
+
+## Enhanced Features
+
+### 1. Search Filter
+
+Items are filtered by name using:
+
+```dart
+items.where((item) => item.name.contains(searchText)).toList();
+```
+
+In the app, search is case-insensitive and updates live as you type.
+
+### 2. Total Inventory Value
+
+The app calculates total inventory value with:
+
+```dart
+double total = items.fold(0, (sum, item) {
+	return sum + (item.price * item.quantity);
+});
+```
+
+The total is displayed above the item list.
+
+### 3. Dark Mode Toggle
+
+A dark/light mode toggle is available in the top app bar.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Install dependencies:
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter pub get
+```
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+2. Configure Firebase for your platforms.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Run the app:
+
+```bash
+flutter run
+```
